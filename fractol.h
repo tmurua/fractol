@@ -1,0 +1,73 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/24 18:22:15 by tmurua            #+#    #+#             */
+/*   Updated: 2024/09/24 19:19:06 by tmurua           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef FRACTOL_H
+# define FRACTOL_H
+
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <math.h>
+
+/* macros */
+
+/* stuctures */
+typedef struct s_window_init
+{
+	void	*mlx_init;
+	void	*mlx_new_window;
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	int		height;
+	int		width;
+}	t_window_init;
+
+typedef struct s_fractal_render
+{
+	/* name
+	min_real;
+	max_real;
+	min_imaginary;
+	max_imaginary;
+	zoom_level;
+	iterations;
+	julia_c_real;
+	julia_c_i;
+	color;
+	*/
+}	t_fractal_render;
+
+typedef struct s_event_handler
+{
+	/*mouse_x;
+	mouse_y;
+	arrow_x
+	arrow_y
+	window_close*/
+}	t_event_handler;
+
+typedef struct s_fractol
+{
+	t_window_init		window_init;
+	t_fractal_render	fractal_render;
+	t_event_handler		event_handler;
+}	t_fractol;
+
+
+
+
+/* function prototypes */
+
+#endif
