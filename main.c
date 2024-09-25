@@ -6,7 +6,7 @@
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 18:03:02 by tmurua            #+#    #+#             */
-/*   Updated: 2024/09/25 16:52:14 by tmurua           ###   ########.fr       */
+/*   Updated: 2024/09/25 21:53:14 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(int argc, char **argv)
 				|| !ft_strncmp(argv[1], "burning", 7)))
 		|| (argc == 4 && !ft_strncmp(argv[1], "julia", 5)))
 	{
+		fractol.fractal_render.name = argv[1];
 		if (argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10))
 			window_init(&fractol);
 		if (argc == 4 && !ft_strncmp(argv[1], "julia", 5))
@@ -28,21 +29,17 @@ int	main(int argc, char **argv)
 			window_init(&fractol);
 	}
 	else
-	{
-		write(1, "Enter:\n./fractol mandelbrot\n./fractol julia x y\n", 48);
-		write(1, "./fractol burning\n", 18);
-		exit(EXIT_FAILURE);
-	}
-
+		wrong_input();
 }
+
+void	wrong_input(void)
+{
+	write(1, "Enter:\n./fractol mandelbrot\n./fractol julia x y\n", 48);
+	write(1, "./fractol burning\n", 18);
+	exit(EXIT_FAILURE);
+}
+
 /*
-2.c- If parameter "burning" is passed as argv[1], render Burning Ship fractal
-	- Use correct parameters for each field of the fractal
-	- Include color depth representatio
-3. Initialize window with appropriate MiniLibX function
-	- Include handling of window close event (clicking the close button)
-	- Ensure smooth window management (responsive when switching/minimizing)
-4. Initialize image with appropriate MiniLibX function (likely needs a buffer)
 5. Set up mouse events using MiniLibX functions
 	- Implement mouse wheel zoom in and out
 	- Implement zoom following the actual mouse position
