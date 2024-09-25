@@ -5,14 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/24 18:22:15 by tmurua            #+#    #+#             */
-/*   Updated: 2024/09/24 19:19:06 by tmurua           ###   ########.fr       */
+/*   Created: 2024/09/22 18:01:31 by tmurua            #+#    #+#             */
+/*   Updated: 2024/09/25 09:55:34 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
+# include "minilibx-linux/mlx.h"
+# include "libft/libft.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>

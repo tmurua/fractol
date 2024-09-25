@@ -1,7 +1,10 @@
 NAME = fractol
 
 CC = cc
-CFLAGS = -Wall - Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
+
+MINILIBX = ./minilibx-linux
+LIBFT = ./libft/libft.a
 
 SRC = main.c
 OBJ = $(SRC:.c=.o)
@@ -9,7 +12,9 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -lm -lmlx -lXext - lX11
+	make -C ./libft
+	echo "libft compiled"
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT) -lm -lmlx -lXext -lX11
 	echo "$(NAME) generated"
 
 %.o: %.c
@@ -21,7 +26,7 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
-	echo "$(NAME) and object files deleted"
+	echo "$(NAME) deleted"
 
 re: fclean all
 
