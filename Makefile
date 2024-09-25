@@ -6,7 +6,7 @@ CFLAGS = -Wall -Wextra -Werror
 MINILIBX = ./minilibx-linux
 LIBFT = ./libft/libft.a
 
-SRC = main.c
+SRC = main.c window_init.c
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)

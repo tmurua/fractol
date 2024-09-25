@@ -6,7 +6,7 @@
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 18:03:02 by tmurua            #+#    #+#             */
-/*   Updated: 2024/09/25 11:12:16 by tmurua           ###   ########.fr       */
+/*   Updated: 2024/09/25 16:52:14 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,18 @@
 
 int	main(int argc, char **argv)
 {
-	//t_fractol	fractol;
+	t_fractol	fractol;
 
 	if ((argc == 2 && (!ft_strncmp(argv[1], "mandelbrot", 10)
 				|| !ft_strncmp(argv[1], "burning", 7)))
 		|| (argc == 4 && !ft_strncmp(argv[1], "julia", 5)))
 	{
 		if (argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10))
-			write(1, "rendering mandelbrot\n", 21);
-			// render mandelbrot with right parameters
+			window_init(&fractol);
 		if (argc == 4 && !ft_strncmp(argv[1], "julia", 5))
-			write(1, "rendering julia\n", 16);
-			// render julia with argv[2] and argv[3] as real and i of constant
+			window_init(&fractol);
 		if (argc == 2 && !ft_strncmp(argv[1], "burning", 7))
-			write(1, "rendering burning\n", 18);
-			// render burning with right parameters
+			window_init(&fractol);
 	}
 	else
 	{
@@ -36,6 +33,8 @@ int	main(int argc, char **argv)
 		write(1, "./fractol burning\n", 18);
 		exit(EXIT_FAILURE);
 	}
+
+}
 /*
 2.c- If parameter "burning" is passed as argv[1], render Burning Ship fractal
 	- Use correct parameters for each field of the fractal
@@ -52,4 +51,3 @@ int	main(int argc, char **argv)
 	- Implement arrow keys to move the view (navigation)
 7. Start event loop
 8. Clean up resources on exit */
-}
