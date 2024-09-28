@@ -6,11 +6,21 @@
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:14:24 by tmurua            #+#    #+#             */
-/*   Updated: 2024/09/26 23:51:57 by tmurua           ###   ########.fr       */
+/*   Updated: 2024/09/28 17:03:49 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+void	fractal_render(t_fractol *fractol)
+{
+	fractol->fractal_render.min_real = -2.0;
+	fractol->fractal_render.max_real = 2.0;
+	fractol->fractal_render.min_imagin = -1.5;
+	fractol->fractal_render.max_imagin = 1.5;
+	fractol->fractal_render.zoom_level = 1.0;
+	fractol->fractal_render.iterations = 50;
+}
 
 void	map_coords_to_plane(t_fractol *fractol)
 {
@@ -37,12 +47,3 @@ void	map_coords_to_plane(t_fractol *fractol)
 	}
 }
 
-void	initialize_fractal(t_fractol *fractol)
-{
-	fractol->fractal_render.min_real = -2.0;
-	fractol->fractal_render.max_real = 2.0;
-	fractol->fractal_render.min_imagin = -1.5;
-	fractol->fractal_render.max_imagin = 1.5;
-	fractol->fractal_render.zoom_level = 1.0;
-	fractol->fractal_render.iterations = 50;
-}

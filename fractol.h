@@ -6,7 +6,7 @@
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 18:01:31 by tmurua            #+#    #+#             */
-/*   Updated: 2024/09/26 23:52:12 by tmurua           ###   ########.fr       */
+/*   Updated: 2024/09/28 13:23:01 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,13 @@ typedef struct s_window_init
 	int		line_length;
 	int		endian;
 }	t_window_init;
+
+typedef struct s_complex_number
+{
+	double	x;
+	double	y;
+}	t_complex_number;
+
 
 typedef struct s_fractal_render
 {
@@ -78,6 +85,7 @@ void	window_init(t_fractol *fractol);
 int		close_window(t_fractol *fractol);
 
 /* fractal_render.c */
+void	fractal_render(t_fractol *fractol);
 void	map_coords_to_plane(t_fractol *fractol);
 
 #endif

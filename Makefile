@@ -6,7 +6,7 @@ CFLAGS = -Wall -Wextra -Werror
 MINILIBX = ./minilibx-linux
 LIBFT = ./libft/libft.a
 
-SRC = main.c window_init.c
+SRC = main.c window_init.c fractal_render.c
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
