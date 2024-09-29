@@ -6,7 +6,7 @@
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 18:03:02 by tmurua            #+#    #+#             */
-/*   Updated: 2024/09/28 17:03:00 by tmurua           ###   ########.fr       */
+/*   Updated: 2024/09/29 20:43:40 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,10 @@ int	main(int argc, char **argv)
 				|| !ft_strncmp(argv[1], "burning", 7)))
 		|| (argc == 4 && !ft_strncmp(argv[1], "julia", 5)))
 	{
-		fractol.fractal_render.name = argv[1];
-		if (argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10))
-			window_init(&fractol);
-		if (argc == 4 && !ft_strncmp(argv[1], "julia", 5))
-			window_init(&fractol);
-		if (argc == 2 && !ft_strncmp(argv[1], "burning", 7))
-			window_init(&fractol);
+		fractol.name = argv[1];
+		window_init(&fractol);
+		render_fractal(&fractol);
+		mlx_loop(fractol.window_init.mlx_init);
 	}
 	else
 		wrong_input();
@@ -34,8 +31,8 @@ int	main(int argc, char **argv)
 
 void	wrong_input(void)
 {
-	write(1, "Enter:\n./fractol mandelbrot\n./fractol julia x y\n", 48);
-	write(1, "./fractol burning\n", 18);
+	ft_printf("Enter:\n./fractol mandelbrot\n./fractol julia x y\n");
+	ft_printf("./fractol burning\n");
 	exit(EXIT_FAILURE);
 }
 

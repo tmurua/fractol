@@ -1,49 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractal_render.c                                   :+:      :+:    :+:   */
+/*   fractal_data.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:14:24 by tmurua            #+#    #+#             */
-/*   Updated: 2024/09/28 17:03:49 by tmurua           ###   ########.fr       */
+/*   Updated: 2024/09/29 14:12:13 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	fractal_render(t_fractol *fractol)
+void	render_fractal(t_fractol *fractol)
 {
-	fractol->fractal_render.min_real = -2.0;
-	fractol->fractal_render.max_real = 2.0;
-	fractol->fractal_render.min_imagin = -1.5;
-	fractol->fractal_render.max_imagin = 1.5;
-	fractol->fractal_render.zoom_level = 1.0;
-	fractol->fractal_render.iterations = 50;
+	printf("Rendering fractal\n");
+	if (!ft_strncmp(fractol->name, "mandelbrot", 10))
+		render_mandelbrot(fractol);
+//	if (!ft_strncmp(fractol->name, "julia", 5))
+//		render_julia(&fractol);
+//	if (!ft_strncmp(fractol->name, "burning", 7))
+//		render_burning(&fractol);
 }
 
-void	map_coords_to_plane(t_fractol *fractol)
+t_complex_nbr	scale_pxl_to_complex(int pxl_x, int pxl_y)
 {
-	int		x;
-	int		y;
-	double	real;
-	double	imagin;
+	t_complex_nbr	complex_coord;
 
-	y = 0;
-	while (y < HEIGHT)
+	complex_coord.real = MIN_REAL_AXIS + (pxl_x / (double)WIDTH)
+		* (MAX_REAL_AXIS - MIN_REAL_AXIS);
+	complex_coord.imagin = MIN_IMAGIN_AXIS + (pxl_y / (double)HEIGHT)
+		* (MAX_IMAGIN_AXIS - MIN_IMAGIN_AXIS);
+	return (complex_coord);
+}
+
+int	calculate_color(int iterations)
+{
+	if (iterations >= MAX_ITERATIONS)
+		return (BLACK);
+	return (PINK * iterations * MAX_ITERATIONS);
+}
+
+void	put_pxl_color_to_img(t_fractol *f, int x, int y, int color)
+{
+	char	*pixel;
+
+	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
 	{
-		x = 0;
-		while (x < WIDTH)
-		{
-			real = fractol->fractal_render.min_real + (x / (double)WIDTH)
-				* (fractol->fractal_render.max_real
-					- fractol->fractal_render.min_real);
-			imagin = fractol->fractal_render.min_imagin + (y / (double)HEIGHT)
-				* (fractol->fractal_render.max_imagin
-					- fractol->fractal_render.min_imagin);
-			x++;
-		}
-		y++;
+		pixel = f->window_init.addr
+			+ (y * f->window_init.line_length)
+			+ (x * (f->window_init.bits_per_pixel / 8));
+		*(unsigned int *)pixel = color;
 	}
 }
-
