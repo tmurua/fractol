@@ -22,15 +22,6 @@ void	render_fractal(t_fractol *fractol)
 //		render_burning(&fractol);
 }
 
-void	create_image(t_fractol *fractol)
-{
-	fractol->window_init.img = mlx_new_image(fractol->window_init.mlx_init,
-			WIDTH, HEIGHT);
-	fractol->window_init.addr = mlx_get_data_addr(fractol->window_init.img,
-			&fractol->window_init.bits_per_pixel,
-			&fractol->window_init.line_length, &fractol->window_init.endian);
-}
-
 t_complex_nbr	scale_pxl_to_complex(int pxl_x, int pxl_y, t_fractol *fractol)
 {
 	t_complex_nbr	complex_coord;

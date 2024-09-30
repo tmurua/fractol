@@ -6,7 +6,7 @@
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 18:01:31 by tmurua            #+#    #+#             */
-/*   Updated: 2024/09/30 17:17:28 by tmurua           ###   ########.fr       */
+/*   Updated: 2024/09/30 19:14:29 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,11 @@ void			wrong_input(void);
 
 /* window_init.c */
 void			window_init(t_fractol *fractol);
+void			create_image(t_fractol *fractol);
 int				close_window(t_fractol *fractol);
 
 /* fractal_render.c */
 void			render_fractal(t_fractol *fractol);
-void			create_image(t_fractol *fractol);
 t_complex_nbr	scale_pxl_to_complex(int pxl_x, int pxl_y, t_fractol *fractol);
 int				calculate_color(int iterations);
 void			put_pxl_color_to_img(t_fractol *f, int x, int y, int color);
@@ -101,6 +101,9 @@ void			render_mandelbrot(t_fractol *fractol);
 /* event_handler.c */
 void			events_handler(t_fractol *fractol);
 int				press_keys_handler(int keycode, t_fractol *fractol);
-int				mouse_wheel_handler(int wheel_input, t_fractol *fractol);
+int				mouse_handler(int wheel, int x, int y, t_fractol *fractol);
+void			adjust_zoom(int wheel, t_fractol *fractol);
+void			adjust_center_position(int x, int y, t_fractol *fractol);
+
 
 #endif
