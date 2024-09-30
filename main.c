@@ -6,7 +6,7 @@
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 18:03:02 by tmurua            #+#    #+#             */
-/*   Updated: 2024/09/29 20:43:40 by tmurua           ###   ########.fr       */
+/*   Updated: 2024/09/30 15:10:27 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(int argc, char **argv)
 		fractol.name = argv[1];
 		window_init(&fractol);
 		render_fractal(&fractol);
+		events_handler(&fractol);
 		mlx_loop(fractol.window_init.mlx_init);
 	}
 	else
@@ -40,8 +41,4 @@ void	wrong_input(void)
 5. Set up mouse events using MiniLibX functions
 	- Implement mouse wheel zoom in and out
 	- Implement zoom following the actual mouse position
-6. Set up keyboard events using MiniLibX functions
-	- Implement pressing ESC key to close window and quit program
-	- Implement arrow keys to move the view (navigation)
-7. Start event loop
-8. Clean up resources on exit */
+*/

@@ -6,7 +6,7 @@
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 16:28:53 by tmurua            #+#    #+#             */
-/*   Updated: 2024/09/29 22:47:53 by tmurua           ###   ########.fr       */
+/*   Updated: 2024/09/30 17:53:32 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	render_mandelbrot(t_fractol *fractol)
 		pxl_x = 0;
 		while (pxl_x++ < WIDTH)
 		{
-			complex_coord = scale_pxl_to_complex(pxl_x, pxl_y);
+			complex_coord = scale_pxl_to_complex(pxl_x, pxl_y, fractol);
 			iterations = mandelbrot_iteration(complex_coord);
 			color = calculate_color(iterations);
 			put_pxl_color_to_img(fractol, pxl_x, pxl_y, color);

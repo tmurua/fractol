@@ -1,12 +1,12 @@
 NAME = fractol
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 MINILIBX = ./minilibx-linux
 LIBFT = ./libft/libft.a
 
-SRC = main.c window_init.c fractal_render.c mandelbrot_set.c
+SRC = main.c window_init.c fractal_render.c mandelbrot_set.c event_handler.c
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
