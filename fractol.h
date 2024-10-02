@@ -6,7 +6,7 @@
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 18:01:31 by tmurua            #+#    #+#             */
-/*   Updated: 2024/09/30 19:14:29 by tmurua           ###   ########.fr       */
+/*   Updated: 2024/10/02 17:55:59 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_window_init
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
-	int		line_length;
+	int		bytes_per_vertical_line;
 	int		endian;
 }	t_window_init;
 
@@ -71,32 +71,32 @@ typedef struct s_fractol
 	char				*name;
 	t_window_init		window_init;
 	t_event_handler		event_handler;
+	t_complex_nbr		julia_c;
 }	t_fractol;
 
 /* function prototypes */
 /* main.c */
+int				input_arguments(int argc, char **argv, t_fractol*fractol);
+void			fractol_init(t_fractol *fractol);
 void			wrong_input(void);
 
 /* window_init.c */
 void			window_init(t_fractol *fractol);
-void			create_image(t_fractol *fractol);
+void			create_image_buffer(t_fractol *fractol);
 int				close_window(t_fractol *fractol);
 
 /* fractal_render.c */
 void			render_fractal(t_fractol *fractol);
+void			process_pixel(int pxl_x, int pxl_y, t_fractol *fractol);
 t_complex_nbr	scale_pxl_to_complex(int pxl_x, int pxl_y, t_fractol *fractol);
 int				calculate_color(int iterations);
 void			put_pxl_color_to_img(t_fractol *f, int x, int y, int color);
 
-/* mandelbrot_set.c */
+/* iterative_equations.c */
+t_complex_nbr	polynomial_quadratic_i(t_complex_nbr z, t_complex_nbr c);
+t_complex_nbr	square_complex_number(t_complex_nbr z);
 int				mandelbrot_iteration(t_complex_nbr c);
-void			render_mandelbrot(t_fractol *fractol);
-
-/* julia_sets.c */
-//void    render_julia(t_fractol *fractol);
-
-/* burning_set.c */
-//void    render_burning_ship(t_fractol *fractol);
+int				julia_iteration(t_complex_nbr z, t_fractol *fractol);
 
 /* event_handler.c */
 void			events_handler(t_fractol *fractol);
@@ -105,5 +105,8 @@ int				mouse_handler(int wheel, int x, int y, t_fractol *fractol);
 void			adjust_zoom(int wheel, t_fractol *fractol);
 void			adjust_center_position(int x, int y, t_fractol *fractol);
 
+/* ft_atof.c */
+double			ft_atof(const char *str);
+int				handle_sign(const char *str, int *i);
 
 #endif

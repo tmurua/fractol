@@ -6,12 +6,13 @@
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 23:00:09 by tmurua            #+#    #+#             */
-/*   Updated: 2024/09/30 19:57:22 by tmurua           ###   ########.fr       */
+/*   Updated: 2024/10/01 20:05:45 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
+/* init event handlers for key and mouse inputs */
 void	events_handler(t_fractol *fractol)
 {
 	fractol->event_handler.real_axis = 0;
@@ -23,6 +24,7 @@ void	events_handler(t_fractol *fractol)
 		mouse_handler, fractol);
 }
 
+/* handle key press events for navigation and close window */
 int	press_keys_handler(int keycode, t_fractol *fractol)
 {
 	if (keycode == ESC)
@@ -42,9 +44,8 @@ int	press_keys_handler(int keycode, t_fractol *fractol)
 int	mouse_handler(int wheel, int x, int y, t_fractol *fractol)
 {
 	adjust_zoom(wheel, fractol);
-//	adjust_center_position(x, y, fractol);
-	(void) x; //delete after implementing adjust_center_position()
-	(void) y; //delete after implementing adjust_center_position()
+	(void) x;
+	(void) y;
 	render_fractal(fractol);
 	return (0);
 }
@@ -56,22 +57,3 @@ void	adjust_zoom(int wheel, t_fractol *fractol)
 	else if (wheel == MOUSE_WHEEL_DOWN)
 		fractol->event_handler.scale_zoom *= 0.9;
 }
-
-/* make it work!
-void	adjust_center_position(int x, int y, t_fractol *fractol)
-{
-	t_complex_nbr	mouse_two_axis;
-	double			real_range;
-	double			imagin_range;
-
-	mouse_two_axis = scale_pxl_to_complex(x, y, fractol);
-	real_range = (MAX_REAL_AXIS - MIN_REAL_AXIS)
-		* fractol->event_handler.scale_zoom;
-	imagin_range = (MAX_IMAGIN_AXIS - MIN_IMAGIN_AXIS)
-		* fractol->event_handler.scale_zoom;
-	fractol->event_handler.real_axis = mouse_two_axis.real
-		- (x / (double)WIDTH) * real_range;
-	fractol->event_handler.imagin_axis = mouse_two_axis.imagin
-		- (y / (double)HEIGHT) * imagin_range;
-}
-*/
