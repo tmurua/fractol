@@ -6,7 +6,7 @@
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 18:01:31 by tmurua            #+#    #+#             */
-/*   Updated: 2024/10/02 17:55:59 by tmurua           ###   ########.fr       */
+/*   Updated: 2024/10/04 02:51:52 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,7 @@ void			adjust_center_position(int x, int y, t_fractol *fractol);
 /* ft_atof.c */
 double			ft_atof(const char *str);
 int				handle_sign(const char *str, int *i);
+double			handle_integer_part(const char *str, int *i);
+double			handle_decimal_part(const char *str, int *i);
 
 #endif

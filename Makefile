@@ -12,19 +12,22 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	make -C ./libft
+	make -C ./libft --no-print-directory
 	echo "libft compiled"
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT) -lm -lmlx -lXext -lX11
+	echo "minilibx compiled"
 	echo "$(NAME) generated"
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
+	make clean -C ./libft --no-print-directory
 	rm -f $(OBJ)
 	echo "object files deleted"
 
 fclean: clean
+	make fclean -C ./libft --no-print-directory
 	rm -f $(NAME)
 	echo "$(NAME) deleted"
 

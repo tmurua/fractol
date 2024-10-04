@@ -6,7 +6,7 @@
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 18:03:02 by tmurua            #+#    #+#             */
-/*   Updated: 2024/10/02 19:59:16 by tmurua           ###   ########.fr       */
+/*   Updated: 2024/10/04 02:53:03 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,6 @@ int	main(int argc, char **argv)
 {
 	t_fractol	fractol;
 
-	printf("%f\n", ft_atof("0.285"));       // Should print 0.285000
-	printf("%f\n", ft_atof("-0.8"));        // Should print -0.800000
-	printf("%f\n", ft_atof("0.0"));         // Should print 0.000000
-	printf("%f\n", ft_atof("-1.25"));       // Should print -1.250000
 	if (!input_arguments(argc, argv, &fractol))
 		return (EXIT_FAILURE);
 	fractol_init(&fractol);

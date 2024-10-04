@@ -32,7 +32,7 @@ $(NAME): $(OBJECTS)
 all: $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< $^
+	$(CC) $(CFLAGS) -c $< -o $@
 
 bonus: $(BONUS_OBJECTS)
 		ar -rcs $(NAME) $(BONUS_OBJECTS)

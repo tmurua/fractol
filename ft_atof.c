@@ -6,7 +6,7 @@
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 21:58:04 by tmurua            #+#    #+#             */
-/*   Updated: 2024/10/02 19:59:41 by tmurua           ###   ########.fr       */
+/*   Updated: 2024/10/04 02:50:58 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,32 +17,13 @@ double	ft_atof(const char *str)
 {
 	int		sign;
 	double	result;
-	double	decimal;
-	double	divisor;
 	int		i;
 
 	i = 0;
-	sign = 1;
-	result = 0.0;
-	decimal = 0.0;
-	divisor = 1.0;
 	sign = handle_sign(str, &i);
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = result * 10.0 + (str[i] - '0');
-		i++;
-	}
+	result = handle_integer_part(str, &i);
 	if (str[i] == '.')
-	{
-		i++;
-		while (str[i] >= '0' && str[i] <= '9')
-		{
-			decimal = decimal * 10.0 + (str[i] - '0');
-			divisor *= 10.0;
-			i++;
-		}
-		result += decimal / divisor;
-	}
+		result = result + handle_decimal_part(str, &i);
 	return (sign * result);
 }
 
@@ -62,3 +43,32 @@ int	handle_sign(const char *str, int *i)
 	return (sign);
 }
 
+double	handle_integer_part(const char *str, int *i)
+{
+	double	result;
+
+	result = 0.0;
+	while (str[*i] >= '0' && str[*i] <= '9')
+	{
+		result = result * 10.0 + (str[*i] - '0');
+		(*i)++;
+	}
+	return (result);
+}
+
+double	handle_decimal_part(const char *str, int *i)
+{
+	double	decimal;
+	double	divisor;
+
+	decimal = 0.0;
+	divisor = 1.0;
+	(*i)++;
+	while (str[*i] >= '0' && str[*i] <= '9')
+	{
+		decimal = decimal * 10.0 + (str[*i] - '0');
+		divisor = divisor * 10.0;
+		(*i)++;
+	}
+	return (decimal / divisor);
+}
