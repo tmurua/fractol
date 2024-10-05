@@ -6,7 +6,7 @@
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 18:03:02 by tmurua            #+#    #+#             */
-/*   Updated: 2024/10/04 02:53:03 by tmurua           ###   ########.fr       */
+/*   Updated: 2024/10/05 17:33:18 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,18 @@ int	main(int argc, char **argv)
 
 int	input_arguments(int argc, char **argv, t_fractol*fractol)
 {
-	if (argc == 2 && (!ft_strncmp(argv[1], "mandelbrot", 10)))
+	if (argc == 2 && (!ft_strncmp(argv[1], "mandelbrot", 11)))
 	{
 		fractol->name = argv[1];
 		return (1);
 	}
-	else if ((argc == 4 && !ft_strncmp(argv[1], "julia", 5)))
+	else if ((argc == 4 && !ft_strncmp(argv[1], "julia", 6)
+			&& (!ft_strncmp(argv[2], "0", 1)
+				|| (!ft_strncmp(argv[2], "-", 1))
+				|| (!ft_strncmp(argv[2], "1", 1)))
+			&& (!ft_strncmp(argv[3], "0", 1)
+				|| (!ft_strncmp(argv[3], "-", 1))
+				|| (!ft_strncmp(argv[3], "1", 1)))))
 	{
 		fractol->name = argv[1];
 		fractol->julia_c.real = ft_atof(argv[2]);

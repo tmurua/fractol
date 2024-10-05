@@ -6,7 +6,7 @@
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 18:01:31 by tmurua            #+#    #+#             */
-/*   Updated: 2024/10/04 02:51:52 by tmurua           ###   ########.fr       */
+/*   Updated: 2024/10/05 17:36:34 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define MAX_REAL_AXIS 2.0
 # define MIN_IMAGIN_AXIS -1.5
 # define MAX_IMAGIN_AXIS 1.5
-# define MAX_ITERATIONS 150
+# define MAX_ITERATIONS 50
 # define PINK 0xff00ff
 # define BLACK 0x000000
 # define ESC 65307
@@ -103,7 +103,7 @@ void			events_handler(t_fractol *fractol);
 int				press_keys_handler(int keycode, t_fractol *fractol);
 int				mouse_handler(int wheel, int x, int y, t_fractol *fractol);
 void			adjust_zoom(int wheel, t_fractol *fractol);
-void			adjust_center_position(int x, int y, t_fractol *fractol);
+/*void			adjust_center_position(int x, int y, t_fractol *fractol);*/
 
 /* ft_atof.c */
 double			ft_atof(const char *str);

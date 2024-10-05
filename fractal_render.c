@@ -6,7 +6,7 @@
 /*   By: tmurua <tmurua@student.42berlin.de>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:14:24 by tmurua            #+#    #+#             */
-/*   Updated: 2024/10/02 18:42:24 by tmurua           ###   ########.fr       */
+/*   Updated: 2024/10/05 16:27:32 by tmurua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,11 @@ void	process_pixel(int pxl_x, int pxl_y, t_fractol *fractol)
 	int				iterations;
 	int				color;
 
+	iterations = 0;
 	complex_coord = scale_pxl_to_complex(pxl_x, pxl_y, fractol);
-	if (!ft_strncmp(fractol->name, "mandelbrot", 10))
+	if (!ft_strncmp(fractol->name, "mandelbrot", 11))
 		iterations = mandelbrot_iteration(complex_coord);
-	else if (!ft_strncmp(fractol->name, "julia", 5))
+	else if (!ft_strncmp(fractol->name, "julia", 6))
 		iterations = julia_iteration(complex_coord, fractol);
 	color = calculate_color(iterations);
 	put_pxl_color_to_img(fractol, pxl_x, pxl_y, color);
