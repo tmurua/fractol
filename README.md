@@ -1,38 +1,80 @@
-Rendering requirements:
-- [x] Rendering Julia sets passing different parameters through the CLI
-- [x] Rendering the Mandelbrot set through the CLI
-- [x] BONUS Rendering another set through the CLI
-- [ ] Use colors to show depth of each fractal (meaning how many iterations it takes to go to chaos, infinity)
+# 🌀 Fract-ol | 42 School Project
 
-Graphical interface requirements:
-- [ ] Display the image in a window (using MiniLibX)
-- [ ] Mouse wheel zooms in and out
-- [ ] BONUS Zoom follows the actual mouse position (EVENT)
-- [ ] BONUS Moving the view by pressing the arrows keys (EVENT)
-- [ ] Pressing ESC must close the window and quit the program (EVENT)
-- [ ] Clicking on the cross on the window’s frame must close the window and quit the program (EVENT)
+*An interactive fractal exploration tool built in C using MiniLibX.*
 
-Input handling requirements:
-- [ ] Each kind of set, Julia sets (handles more parameters to differentiate which set), Mandebrot and another one will be input by the user on the CLI
-- [ ] If user inputs invalid parameter, the program displays a list of available parameters and exits properly
+## 🚀 Overview
 
-Files:
-- [ ] Makefile
-  - [x] NAME = fractol
-  - [ ] all
-  - [ ] clean
-  - [ ] fclean
-  - [ ] re
-- [ ] fractol.h
-  - [x] include MiniLibx
-  - [x] #include <unistd.h> for open, close, read, write
-  - [x] #include <stdlib.h> for malloc, free,
-  - [x] #include <stdio.h> for what?
-  - [x] #include <math.h>
-  - [ ] structures (which ones?)
-  - [ ] macros? (which ones?)
-- [ ] main.c
-  - [ ] main function should take different parameters
-  - [ ] main function should act as a high-level overview of the program's flow
-- Modularization
-  - [ ] Which modules do I need? How can I know that? I realize it would be good to have one for handling events, like mouse wheel, mouse position, and arrows, maybe one for initializing the window and handling which parameters are going to be send to the graphic interface, one for handling the complex equations to add pixel by pixel on the image on the window of the graphic interface. So that would be events.c, init.c, equations.c. But actually I still feel a bit lost on how to determine that, should I start writing the code (or even a pseudo code) on the main.c first and then start modularizing or should I try to modularize from the get go?
+**Fract-ol** is a graphical exploration tool for visualizing fractals such as **Mandelbrot** and **Julia** sets. It offers an interactive interface allowing users to dynamically zoom, pan, and explore complex mathematical landscapes. Developed as part of the 42 School curriculum, this project demonstrates a deep understanding of fractal geometry, complex number operations, and graphics programming using MiniLibX.
+
+## ✨ Features
+
+- Interactive visualization of Mandelbrot and Julia fractals.
+- Dynamic zooming and panning through keyboard and mouse interaction.
+- Customizable parameters for Julia sets.
+- Clean and modular C implementation leveraging MiniLibX graphics library.
+
+## 🖥️ Installation & Usage
+
+### Clone the repository:
+```bash
+git clone https://github.com/yourusername/fractol.git
+cd fractol
+```
+
+### Compile:
+```bash
+make
+```
+
+### Run Mandelbrot:
+```bash
+./fractol mandelbrot
+```
+
+### Run Julia:
+```bash
+./fractol julia <real_part> <imaginary_part>
+```
+*Example:*
+```bash
+./fractol julia -0.7 0.27015
+```
+
+## 🎮 Controls
+
+| Key/Mouse              | Action          |
+|------------------------|-----------------|
+| `ESC`                  | Exit program    |
+| `Mouse Wheel`          | Zoom In/Out     |
+| `Arrow Keys`           | Pan view        |
+
+## 🛠️ Technologies
+
+- **C** programming language
+- **MiniLibX** graphics library
+- **Libft** custom utility library
+
+## 📌 Project Structure
+```
+fractol/
+├── libft/                  # Custom libft functions
+├── minilibx-linux/         # MiniLibX graphics library
+├── main.c                  # Program entry point
+├── fractal_render.c        # Rendering logic
+├── iterative_equations.c   # Mathematical calculations
+├── event_handler.c         # User interaction handling
+├── window_init.c           # Window initialization and handling
+├── ft_atof.c               # Custom string-to-double conversion
+├── fractol.h               # Project header file
+├── Makefile                # Project build system
+└── README.md               # This file!
+```
+
+## 🙌 Contributions & Improvements
+
+Suggestions for improvements and additional features are always welcome! Feel free to fork the project and submit a pull request or issue.
+
+## 📚 Resources & Acknowledgments
+
+- [MiniLibX Documentation](https://harm-smits.github.io/42docs/libs/minilibx)
+- [Fractal Geometry](https://en.wikipedia.org/wiki/Fractal)
